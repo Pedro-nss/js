@@ -60,6 +60,13 @@
         showQuiz()
     })
     document.getElementById("responder").onclick = function () {
+        // Captura a seleção do botão de rádio
+        const radios = document.getElementsByName("op1");
+
+        // Limpa a seleção (desmarca todos os botões de rádio)
+        radios.forEach(radio => {
+            radio.checked = false; // Desmarca o botão de rádio
+        });
         atual++
         showQuiz()
     };
