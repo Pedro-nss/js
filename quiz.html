@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+
+<body>
+    <h2 id="titulo">(Pergunta)</h2>
+    <form id="quiz" action="">
+        <input type="radio" name="op1" id="op1">
+        <label for="op1">(opcao)</label>
+        <input type="radio" name="op1" id="op2">
+        <label for="op2">(opcao)</label>
+        <input type="radio" name="op1" id="op3">
+        <label for="op3">(opcao)</label>
+        <input type="radio" name="op1" id="op4">
+        <label for="op4">(opcao)</label>
+        <input type="button" id="responder" value="Responder">
+    </form>
+</body>
+<script>
+    let atual = 0
+    class Pergunta {
+        constructor(texto, opcoes) {
+            this.texto = texto
+            this.opcoes = opcoes
+        }
+    }
+    perguntas = [
+        new Pergunta(
+            "Como que você se identifica?",
+            ["Timido", "Extrovertido", "Exagerado", "Meio termo"]
+        ),
+        new Pergunta(
+            "Qual dessas opções você prefere fazer no tempo livre?",
+            ["Sair com amigos", "Jogar Videogames", "Beisebol", "Pegar peixes com a própria boca"]
+        ),
+        new Pergunta(
+            "Qual sua comida favorita?",
+            ["Lasanha", "Pizza", "Madeira", "Nozes"]
+        )
+    ]
+    //Função para mudar as labels
+    function showQuiz() {
+        document.getElementById("titulo").innerHTML = perguntas[atual].texto
+        // Pega todos os elementos <label> dentro do formulário
+        const labels = document.querySelectorAll("#quiz label")
+
+        // Altere o texto de cada label
+        labels[0].innerText = perguntas[atual].opcoes[0]
+        labels[1].innerText = perguntas[atual].opcoes[1]
+        labels[2].innerText = perguntas[atual].opcoes[2]
+        labels[3].innerText = perguntas[atual].opcoes[3]
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        showQuiz()
+    })
+    document.getElementById("responder").onclick = function () {
+        atual++
+        showQuiz()
+    };
+</script>
+
+</html>
